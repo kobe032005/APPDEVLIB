@@ -1,0 +1,47 @@
+@page
+@model Library.Web.Pages.IndexModel
+@{ViewData["Title"]="Dashboard";}
+<section class="page-heading">
+	<div>
+		<p class="eyebrow">Library desk / Overview</p>
+		<h1>Collection at a glance</h1>
+		<p>Your daily view of the books, members, and lending desk.</p>
+	</div>
+	<span class="date-chip">@DateTime.Today.ToString("dddd, MMMM d")</span>
+</section>
+
+<section class="grid metric-grid" aria-label="Library totals">
+	<article class="panel metric" style="--metric-accent: var(--leaf-dark)">
+		<span class="metric-label"><span class="metric-dot"></span>Catalog titles</span>
+		<strong>@Model.Books</strong>
+		<span>Distinct books on record</span>
+	</article>
+	<article class="panel metric" style="--metric-accent: var(--coral)">
+		<span class="metric-label"><span class="metric-dot"></span>Library students</span>
+		<strong>@Model.Members</strong>
+		<span>Registered members</span>
+	</article>
+	<article class="panel metric" style="--metric-accent: #63899a">
+		<span class="metric-label"><span class="metric-dot"></span>On loan</span>
+		<strong>@Model.ActiveLoans</strong>
+		<span>Books currently borrowed</span>
+	</article>
+	<article class="panel metric" style="--metric-accent: #d29a31">
+		<span class="metric-label"><span class="metric-dot"></span>Ready to borrow</span>
+		<strong>@Model.AvailableCopies</strong>
+		<span>Available copies across catalog</span>
+	</article>
+</section>
+
+<section class="welcome" aria-labelledby="desk-title">
+	<div class="welcome-copy">
+		<p class="eyebrow">The lending desk</p>
+		<h2 id="desk-title">Keep good books moving.</h2>
+		<p>Check a title, register a reader, or record a return from one place.</p>
+	</div>
+	<div class="welcome-actions">
+		<a class="button primary" href="/Loans">Open loan desk <span aria-hidden="true">→</span></a>
+		<a class="button" href="/Books">Browse catalog</a>
+		<a class="button subtle" href="/Students">View students</a>
+	</div>
+</section>
